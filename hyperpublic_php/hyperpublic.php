@@ -18,7 +18,7 @@ class Hyperpublic {
 
   public $request;
 
-  public $host = "http://localhost:3000/api/v1/";
+  public $host = "https://hyperpublic.com/api/v1/";
 
   public $timeout = 30;
 
@@ -32,9 +32,9 @@ class Hyperpublic {
   /**
    * Set API URLS
    */
-  function accessTokenURL()  { return 'http://localhost:3000/oauth/access_token'; }
-  function authorizeURL()    { return 'http://localhost:3000/oauth/authorize'; }
-  function requestTokenURL() { return 'http://localhost:3000/oauth/request_token'; }
+  function accessTokenURL()  { return 'http://hyperpublic.com/oauth/access_token'; }
+  function authorizeURL()    { return 'http://hyperpublic.com/oauth/authorize'; }
+  function requestTokenURL() { return 'http://hyperpublic.com/oauth/request_token'; }
 
   function __construct($client_key, $client_secret) {
     $this->consumer = "client_id=" . $client_key . "&client_secret=" . $client_secret;
