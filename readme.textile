@@ -1,4 +1,28 @@
 h1. Hyperpublic API PHP Wrapper
 
-p. Much to come including proper documentation, tests, and examples.
+p. Much to come including proper documentation and tests.
 
+
+h2. Simple Usage
+
+p. The easiest way to interact with the Hyperpublic API is with the @get@ and @create@ functions. Both @get@ and @create@ take two arguments. The first argument for both functions will be the type of object(s) you'd like to retrive or add to Hyperpublic: people, places, or things. The second argument will almost always be array of metadata pertaining to an object, except when you are finding an object by id. In this instance the second argument will be an integer. 
+
+h2. Some Examples
+
+p. Returns a person with the ID 4.
+
+bc. $me = $hyperpublic->get('people', 4);
+
+p. Returns a search for people tagged "developer".
+
+bc. $coderz = $hyperpublic->get('people', array('tags' => 'developer'));
+
+p. Say we want to narrow that search to a neighborhood.
+
+bc. $brooklynCoderz = $hyperpublic->get('people', array('tags => 'developer', 'location[neighborhod]' => 'williamsburg'));
+
+p. Let's create a place.
+
+bc. $myHouse = $hyperpublic->create('places', array('name' => 'my house','category' => 'home','tag_list' => '["cat","nintendo wii","coffee","brooklyn"]'));
+
+p. Please join the "Hyperpublic API mailing list":http://groups.google.com/group/hyperpublic-api-developers?pli=1 for the most recent information. Further documentation may be found at "http://developers.hyperpublic.com":http://developers.hyperpublic.com. 
