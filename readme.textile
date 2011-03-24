@@ -1,0 +1,4 @@
+h1. Hyperpublic API PHP Wrapper
+
+p. Much to come including proper documentation, tests, and examples.
+
