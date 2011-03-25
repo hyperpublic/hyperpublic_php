@@ -17,9 +17,15 @@ class People extends Base {
     $this->consumer = $consumerKeys;
   }
 
-  function find($id){
+  function show($id){
     $this->get("/people/{$id}{$this->consumer}");
     return $this;
   }
+
+  function find($params){
+    $this->get("/things" . $this->consumer . "&" . http_build_query($params));
+    return $this;
+  }
+
 
 }

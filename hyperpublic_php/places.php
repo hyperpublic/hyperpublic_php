@@ -17,9 +17,15 @@ class Places extends Base {
     $this->consumer = $consumerKeys;
   }
 
-  function find($id){
+  function show($id){
     $this->get("/places/{$id}{$this->consumer}");
     return $this;
   }
+
+  function find($params){
+    $this->get("/places" . $this->consumer . "&" . http_build_query($params));
+    return $this;
+  }
+
 
 }
