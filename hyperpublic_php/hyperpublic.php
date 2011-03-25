@@ -16,6 +16,7 @@ class Hyperpublic {
   var $people;
   var $places;
   var $things;
+
   public $consumer;
   
   function __construct($key, $secret){
