@@ -19,7 +19,7 @@ bc. $coderz = $hyperpublic->get('people', array('tags' => 'developer'));
 
 p. Say we want to narrow that search to a neighborhood.
 
-bc. $brooklynCoderz = $hyperpublic->get('people', array('tags' => 'developer', 'location[neighborhod]' => 'williamsburg'));
+bc. $brooklynCoderz = $hyperpublic->get('people', array('tags' => 'developer', 'location[neighborhood]' => 'williamsburg'));
 
 p. Let's create a place.
 
