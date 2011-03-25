@@ -20,7 +20,7 @@ class Hyperpublic {
   public $consumer;
   
   function __construct($key, $secret){
-    $this->consumer = "client_id=" . $key . "&client_secret=" . $secret;
+    $this->consumer = "?client_id=" . $key . "&client_secret=" . $secret;
     
     require_once(dirname(__FILE__) . '/base.php');
     require_once(dirname(__FILE__) . '/people.php');

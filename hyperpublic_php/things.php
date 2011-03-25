@@ -18,7 +18,7 @@ class Things extends Base {
   }
 
   function find($id){
-    $this->get("/things/{$id}?{$this->consumer}");
+    $this->get("/things/{$id}{$this->consumer}");
     return $this;
   }
 

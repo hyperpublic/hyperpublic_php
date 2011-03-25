@@ -18,7 +18,7 @@ class Places extends Base {
   }
 
   function find($id){
-    $this->get("/places/{$id}?{$this->consumer}");
+    $this->get("/places/{$id}{$this->consumer}");
     return $this;
   }
 

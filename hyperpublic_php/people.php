@@ -18,7 +18,7 @@ class People extends Base {
   }
 
   function find($id){
-    $this->get("/people/{$id}?{$this->consumer}");
+    $this->get("/people/{$id}{$this->consumer}");
     return $this;
   }
 
