@@ -9,6 +9,10 @@ p. The easiest way to interact with the Hyperpublic API is with the @get@ and @c
 
 h2. Some Examples
 
+p. First we need to create a connection to Hyperpublic using your API keys.
+
+bc. $hyperpublic = new Hyperpublic(CONSUMER_KEY,CONSUMER_SECRET);
+
 p. Returns a person with the ID 4.
 
 bc. $me = $hyperpublic->get('people', 4);
