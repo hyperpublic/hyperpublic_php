@@ -8,12 +8,17 @@ class Things extends Base {
   
   public $id;
   public $things;
-  
-  public $consumer;
   public $tags;
-  public $name;
+  public $title;
+  public $image;
+  public $locations;
+  public $price;
+  public $user_id;
+  public $zipcode;
+  public $lat;
+  public $lon;
 
-  function __construct($consumerKeys){
+  function __construct($consumerKeys = ''){
     $this->consumer = $consumerKeys;
   }
 
@@ -22,10 +27,14 @@ class Things extends Base {
     return $this;
   }
 
-  function find($params){
+  function find(array $params){
     $this->get("/things" . $this->consumer . "&" . http_build_query($params));
     return $this;
   }
   
+  function create(array $params){
+    $this->post("/things" . $this->consumer  . "&" . http_build_query($params));
+    return $this;
+  }
 
 }

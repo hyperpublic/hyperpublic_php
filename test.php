@@ -17,6 +17,8 @@ $places= $hyperpublic->places->find(array('location[neighborhood]'=>'williamsbur
 $thing= $hyperpublic->things->show(200);
 $things= $hyperpublic->things->find(array('location[neighborhood]'=>'williamsburg'));
 
+$newThing = $hyperpublic->things->create(array('title'=>'my new socks', 'price'=>'4', 'zipcode'=>'11211'));
+
 echo "Testing Get People Endpoints<br/>";
 echo "Name: " . $person->headline;
 echo "<br>";
@@ -26,11 +28,18 @@ echo "<br>";
 echo "Testing Get Places Endpoints<br/>";
 echo "Name: " . $place->name;
 echo "<br>";
-echo "ID: " .$place->id;
+echo "ID: " . $place->id;
 echo "<br>";
 
 echo "Testing Get Things Endpoints<br/>";
 echo "Name: " . $thing->title;
 echo "<br>";
-echo "ID: " .$thing->id;
+echo "ID: " . $thing->id;
+echo "<br>";
+
+//print_r($newThing);
+echo "Testing Create Thing Endpoints<br/>";
+//echo "Name: " . $newThing;
+echo "<br>";
+echo "ID: " . $newThing->id;
 echo "<br>";

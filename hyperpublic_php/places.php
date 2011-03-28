@@ -7,13 +7,25 @@ if (preg_match("/places\.php$/", $_SERVER['PHP_SELF'])){
 class Places extends Base {
   
   public $id;
-  public $places;
-  
-  public $consumer;
+  public $plaecs;
+
   public $tags;
   public $name;
+  public $description;
+  public $user_id;
+  public $image;
+  public $location;
+  public $phone_number;
+  public $website;
+  public $category;
+  public $subcategory;
+  public $address;
+  public $zipcode;
+  public $lat;
+  public $lon;
+   
 
-  function __construct($consumerKeys){
+  function __construct($consumerKeys = ''){
     $this->consumer = $consumerKeys;
   }
 
@@ -22,10 +34,14 @@ class Places extends Base {
     return $this;
   }
 
-  function find($params){
+  function find(array $params){
     $this->get("/places" . $this->consumer . "&" . http_build_query($params));
     return $this;
   }
 
+  function create(array $params){
+    $this->post("/places" . $this->consumer . "&" . http_build_query($params));
+    return $this;
+  }
 
 }

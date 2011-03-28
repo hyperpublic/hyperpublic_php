@@ -24,11 +24,8 @@ class Base {
 
   public $ssl_verifypeer = FALSE;
 
-  public function get($url, $params=array()){
+  public function get($url){
     $url = $this->host . $url;
-    if (!empty($params)){
-      $url .= "?" . http_build_query($params);
-    }
     $response = $this->http($url, 'GET');
     $response = json_decode($response);
     foreach ($response as $key => $value) {
@@ -37,19 +34,14 @@ class Base {
     return $this;
   }
   
-  public function create($request, $parameters) {
-    if(is_array($parameters)) {
-      $encoded_params = array();
-      foreach ($parameters as $key => $value) {
-        $encoded_params[] = urlencode($key) . '=' . urlencode($value);
-      }        
-      $params = implode('&', $encoded_params);
-      $url = "{$this->host}{$request}?{$params}&{$this->consumer}";
-      $response = $this->http($url, 'POST');    
-      return $response;
-    } else {
-      return false;
+  public function post($url) {
+    $url = $this->host . $url;
+    $response = $this->http($url, 'POST');
+    $response = json_decode($response);
+    foreach ($response as $key => $value) {
+    $this->{$key} = $value;    
     }
+    return $this;       
   }
     
   /**

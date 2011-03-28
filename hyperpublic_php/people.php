@@ -8,24 +8,34 @@ class People extends Base {
   
   public $id;
   public $people;
-  
-  public $consumer;
   public $tags;
   public $name;
+  public $locations;
+  public $image;
+  public $image_url;
+  public $address;
+  public $zipcode;
+  public $lat;
+  public $lon;
+  public $email;
 
-  function __construct($consumerKeys){
+  function __construct($consumerKeys = ''){
     $this->consumer = $consumerKeys;
   }
 
   function show($id){
-    $this->get("/people/{$id}{$this->consumer}");
+    $this->get("/people/$id}{$this->consumer}");
     return $this;
   }
 
-  function find($params){
-    $this->get("/things" . $this->consumer . "&" . http_build_query($params));
+  function find(array $params){
+    $this->get("/people" . $this->consumer . "&" . http_build_query($params));
+    return $this;
+  } 
+
+  function create(array $params){
+    $this->post("/people" . $this->consumer . "&" . http_build_query($params));
     return $this;
   }
-
 
 }
