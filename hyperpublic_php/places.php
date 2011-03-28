@@ -8,7 +8,6 @@ class Places extends Base {
   
   public $id;
   public $plaecs;
-
   public $tags;
   public $name;
   public $description;
