@@ -13,7 +13,7 @@ class Places extends Base {
   public $description;
   public $user_id;
   public $image;
-  public $location;
+  public $locations;
   public $phone_number;
   public $website;
   public $category;

@@ -20,10 +20,15 @@ class Base {
     $url = $this->host . $url;
     $response = $this->http($url, 'GET');
     $response = json_decode($response);
-    foreach ($response as $key => $value) {
-      $this->{$key} = $value;
+    if (isset($response)){
+      foreach ($response as $key => $value) {
+        $this->{$key} = $value;
+      }
+      return $this;
+    } else {
+      echo "error";
+      echo $response;
     }
-    return $this;
   }
   
   public function post($url) {
