@@ -6,30 +6,22 @@ if (preg_match("/base\.php$/", $_SERVER['PHP_SELF'])){
 
 class Base {
 
-  public $http_code;
-  
+  public $http_code;  
   public $url;
-
   public $request;
-
   public $host = "https://hyperpublic.com/api/v1";
-
   public $timeout = 30;
-
   public $connecttimeout = 30;
-
   public $http_info;
-
   public $useragent = "Hyperpublic PHP beta";
-
   public $ssl_verifypeer = FALSE;
-
+    
   public function get($url){
     $url = $this->host . $url;
     $response = $this->http($url, 'GET');
     $response = json_decode($response);
     foreach ($response as $key => $value) {
-      $this->{$key} = $value;    
+      $this->{$key} = $value;
     }
     return $this;
   }

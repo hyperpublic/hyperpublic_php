@@ -3,6 +3,8 @@
 /*
  *
  * Library for the Hyperpublic v1-beta API
+ *
+ * @author Jonathan Vingiano (@jgv | jonathan@hyperpublic.com)
  * 
  */
 
@@ -13,11 +15,11 @@ if (preg_match("/hyperpublic\.php$/", $_SERVER['PHP_SELF'])){
 
 class Hyperpublic {
   
-  var $people;
-  var $places;
-  var $things;
+  public $people;
+  public $places;
+  public $things;
 
-  public $consumer;
+  private $consumer;
   
   function __construct($key = '', $secret = ''){
     $this->consumer = "?client_id=" . $key . "&client_secret=" . $secret;
