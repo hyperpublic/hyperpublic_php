@@ -26,8 +26,7 @@ class Base {
       }
       return $this;
     } else {
-      echo "error";
-      echo $response;
+      return FALSE;
     }
   }
   
@@ -35,10 +34,14 @@ class Base {
     $url = $this->host . $url;
     $response = $this->http($url, 'POST');
     $response = json_decode($response);
-    foreach ($response as $key => $value) {
-    $this->{$key} = $value;    
+    if (isset($response)){
+      foreach ($response as $key => $value) {
+        $this->{$key} = $value;    
+      }
+      return $this;       
+    } else {
+      return FALSE;
     }
-    return $this;       
   }
     
   /**
