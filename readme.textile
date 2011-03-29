@@ -2,10 +2,9 @@ h1. Hyperpublic API PHP Wrapper
 
 p. Much to come including proper documentation and tests.
 
-
 h2. Simple Usage
 
-p. The easiest way to interact with the Hyperpublic API is with the @get@ and @create@ functions. Both @get@ and @create@ take two arguments. The first argument for both functions will be the type of object(s) you'd like to retrive or add to Hyperpublic: people, places, or things. The second argument will almost always be array of metadata pertaining to an object, except when you are finding an object by id. In this instance the second argument will be an integer. 
+p. A developer can interact with the Hyperpublic API and this PHP library by using a number of methods on a Hyperpublic object. The available methods are @show@, @find@, and @create@. A Hyperpublic object can be either a person (@people@), a place (@places@), or a thing (@thing@).
 
 h2. Some Examples
 
@@ -15,18 +14,22 @@ bc. $hyperpublic = new Hyperpublic(CONSUMER_KEY,CONSUMER_SECRET);
 
 p. Returns a person with the ID 4.
 
-bc. $me = $hyperpublic->get('people', 4);
+bc. $me = $hyperpublic->people->show(4);
 
-p. Returns a search for people tagged "developer".
+p. It would be easy to return a place with the above snippet by just swapping "people" for "places".
 
-bc. $coderz = $hyperpublic->get('people', array('tags' => 'developer'));
+p. The following returns a search for people tagged "developer".
 
-p. Say we want to narrow that search to a neighborhood.
+bc. $developers = $hyperpublic->people->find(array('tags' => 'developer'));
 
-bc. $brooklynCoderz = $hyperpublic->get('people', array('tags' => 'developer', 'location[neighborhood]' => 'williamsburg'));
+p. Say we want to narrow that search to a neighborhood and return no more than 10.
+
+bc. $brooklynDevs = $hyperpublic->people->find(array('tags' => 'developer', 'location[neighborhood]' => 'williamsburg', 'limit' => '10'));
 
 p. Let's create a place.
 
-bc. $myHouse = $hyperpublic->create('places', array('name' => 'my house','category' => 'home','tag_list' => '["cat","nintendo wii","coffee","brooklyn"]'));
+bc. $myHouse = $hyperpublic->place->create(array('name' => 'my house','category' => 'home','tag_list' => '["cat","nintendo wii","coffee","brooklyn"]'));
+
+p. Check out @example.php@ for more detailed examples.
 
 p. Please join the "Hyperpublic API mailing list":http://groups.google.com/group/hyperpublic-api-developers?pli=1 for the most recent information. Further documentation may be found at "http://developers.hyperpublic.com":http://developers.hyperpublic.com. 
