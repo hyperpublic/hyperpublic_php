@@ -18,7 +18,11 @@ bc. $me = $hyperpublic->people->show(4);
 
 p. You can now easily access any available information about me.
 
+p. This is how you get my name.
+
 bc. echo $me->headline; 
+
+p. And this is how you get my tags.
 
 bc. foreach($me->tags as $tag) { 
        echo $tag; 
