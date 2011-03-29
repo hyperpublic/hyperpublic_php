@@ -16,11 +16,25 @@ p. Returns a person with the ID 4.
 
 bc. $me = $hyperpublic->people->show(4);
 
-p. It would be easy to return a place with the above snippet by just swapping "people" for "places".
+p. You can now easily access any available information about me.
+
+bc. echo $me->headline; 
+
+bc. foreach($me->tags as $tag) { 
+bc.     echo $tag; 
+bc. }
 
 p. The following returns a search for people tagged "developer".
 
 bc. $developers = $hyperpublic->people->find(array('tags' => 'developer'));
+
+p. We can now easily retrieve photographs of the developers.
+
+bc. foreach($developers as $developer){     
+bc.     echo "<img src='{$developer->image->src_large}'/>";
+bc. }
+
+
 
 p. Say we want to narrow that search to a neighborhood and return no more than 10.
 
