@@ -14,12 +14,32 @@ if (preg_match("/hyperpublic\.php$/", $_SERVER['PHP_SELF'])){
 }
 
 class Hyperpublic {
-  
+
+  /*
+   * @var object
+   */ 
   public $people;
+  /*
+   * @var object
+   */ 
   public $places;
+  /*
+   * @var object
+   */ 
   public $things;
 
+  /*
+   * @var string
+   */ 
   private $consumer;
+
+  /*
+   * Construct the class 
+   * Instantiate people, place, thing 
+   *
+   * @params string $key string $secret
+   * @return void
+   */
   
   function __construct($key = '', $secret = ''){
     $this->consumer = "?client_id=" . $key . "&client_secret=" . $secret;
