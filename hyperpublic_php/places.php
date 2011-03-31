@@ -18,7 +18,7 @@ class Places extends Base {
   public $category;  /* string */
   public $subcategory;  /* string */
 
-  /*
+  /**
    * Contruct the subclass
    *
    * @param string $consumer_keys
@@ -28,7 +28,7 @@ class Places extends Base {
     $this->consumer = $consumer_keys;
   }
 
-  /*
+  /**
    * Show place by Hyperpublic ID
    *
    * @param integer $id
@@ -40,7 +40,7 @@ class Places extends Base {
     return $this;
   }
 
-  /*
+  /**
    * Find places by search query
    *
    * @param array $params
@@ -52,7 +52,7 @@ class Places extends Base {
     return $this;
   }
 
-  /*
+  /**
    * Create a place on Hyperpublic
    *
    * @param array $params

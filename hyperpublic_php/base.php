@@ -15,7 +15,7 @@ class Base {
   public $useragent = "Hyperpublic PHP beta"; /* Useragent string | @var string */
   public $ssl_verifypeer = FALSE; /* Verify SSL Cert? | @var boolean */
 
-  /*
+  /**
    * Make an HTTP GET request
    *
    */    
@@ -33,7 +33,7 @@ class Base {
     }
   }
 
-  /*
+  /**
    * Make an HTPP POST request
    *
    */      
@@ -51,7 +51,7 @@ class Base {
     }
   }
     
-  /*
+  /**
    * Make an HTTP request
    *
    * @return API results
@@ -92,7 +92,7 @@ class Base {
     return $response;
   }
 
-  /*
+  /**
    * Get the header info to store.
    */
   function getHeader($ch, $header) {

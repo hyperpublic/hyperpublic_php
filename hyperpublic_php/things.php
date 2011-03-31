@@ -14,7 +14,7 @@ class Things extends Base {
   public $price;  /* string */
   public $user_id;  /* integer */
 
-  /*
+  /**
    * Contruct the subclass
    *
    * @param string $consumer_keys
@@ -24,7 +24,7 @@ class Things extends Base {
     $this->consumer = $consumer_keys;
   }
 
-  /*
+  /**
    * Show thing by Hyperpublic ID 
    *
    * @param integer $id
@@ -36,7 +36,7 @@ class Things extends Base {
     return $this;
   }
 
-  /*
+  /**
    * Find things by search query 
    *
    * @param array $params
@@ -48,7 +48,7 @@ class Things extends Base {
     return $this;
   }
 
-  /*
+  /**
    * Create a thing on Hyperpublic
    *
    * @param array $params

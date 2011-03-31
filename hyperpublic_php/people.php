@@ -12,7 +12,7 @@ class People extends Base {
   public $locations;  /* array */
   public $image;  /* string */
 
-  /*
+  /**
    * Contruct the subclass.    
    *
    * @param string $consumer_keys
@@ -22,7 +22,7 @@ class People extends Base {
     $this->consumer = $consumer_keys;
   }
 
-  /*
+  /**
    * Show person by Hyperpublic ID 
    *
    * @param integer $id
@@ -34,7 +34,7 @@ class People extends Base {
     return $this;
   }
 
-  /*
+  /**
    * Find people by search query 
    *
    * @param array $params
@@ -46,7 +46,7 @@ class People extends Base {
     return $this;
   } 
 
-  /*
+  /**
    * Create user on Hyperpublic
    *
    * @param array $params
