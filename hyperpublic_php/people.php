@@ -19,11 +19,11 @@ class People extends Base {
   public $lon;
   public $email;
 
-  function __construct($consumerKeys = ''){
-    $this->consumer = $consumerKeys;
+  function __construct($consumer_keys = ''){
+    $this->consumer = $consumer_keys;
   }
 
-  function show($id){
+  function show($id = ''){
     $this->get("/people/$id}{$this->consumer}");
     return $this;
   }

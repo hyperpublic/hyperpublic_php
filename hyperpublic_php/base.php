@@ -11,12 +11,12 @@ class Base {
   public $request;
   public $host = "https://hyperpublic.com/api/v1";
   public $timeout = 30;
-  public $connecttimeout = 30;
+  public $connect_timeout = 30;
   public $http_info;
   public $useragent = "Hyperpublic PHP beta";
   public $ssl_verifypeer = FALSE;
     
-  public function get($url){
+  public function get($url = ''){
     $url = $this->host . $url;
     $response = $this->http($url, 'GET');
     $response = json_decode($response);
@@ -30,7 +30,7 @@ class Base {
     }
   }
   
-  public function post($url) {
+  public function post($url = '') {
     $url = $this->host . $url;
     $response = $this->http($url, 'POST');
     $response = json_decode($response);
@@ -49,12 +49,12 @@ class Base {
    *
    * @return API results
    */
-  function http($url, $method, $postfields = NULL) {
+  function http($url = '', $method = '', $post_fields = NULL) {
     $this->http_info = array();
     $ci = curl_init();
     /* Curl settings */
     curl_setopt($ci, CURLOPT_USERAGENT, $this->useragent);
-    curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, $this->connecttimeout);
+    curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, $this->connect_timeout);
     curl_setopt($ci, CURLOPT_TIMEOUT, $this->timeout);
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ci, CURLOPT_HTTPHEADER, array('Expect:'));
@@ -65,14 +65,14 @@ class Base {
     switch ($method) {
     case 'POST':
       curl_setopt($ci, CURLOPT_POST, TRUE);
-      if (!empty($postfields)) {
-        curl_setopt($ci, CURLOPT_POSTFIELDS, $postfields);
+      if (!empty($post_fields)) {
+        curl_setopt($ci, CURLOPT_POST_FIELDS, $post_fields);
       }
       break;
     case 'DELETE':
       curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE');
-      if (!empty($postfields)) {
-        $url = "{$url}?{$postfields}";
+      if (!empty($post_fields)) {
+        $url = "{$url}?{$post_fields}";
       }
     }
 

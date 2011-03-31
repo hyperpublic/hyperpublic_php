@@ -18,11 +18,11 @@ class Things extends Base {
   public $lat;
   public $lon;
 
-  function __construct($consumerKeys = ''){
-    $this->consumer = $consumerKeys;
+  function __construct($consumer_keys = ''){
+    $this->consumer = $consumer_keys;
   }
 
-  function show($id){
+  function show($id = ''){
     $this->get("/things/{$id}{$this->consumer}");
     return $this;
   }
