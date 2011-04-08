@@ -8,37 +8,6 @@ require_once("config.php");
 
 $hyperpublic = new Hyperpublic(CONSUMER_KEY,CONSUMER_SECRET);
 
-/*
- * Look up a user by ID.
- */
-$me = $hyperpublic->people->show(4);
-
-/*
- * Look up a place by ID.
- */
-$myOffice = $hyperpublic->places->show(5092);
-
-/*
- * Look up a thing by ID.
- */
-$avocadoTree = $hyperpublic->things->show(415);
-
-/*
- * Look up people who tagged themselves as a developer.
- */
-$developers = $hyperpublic->people->find(array('tags' => 'developer'));
-
-/*
- * Look up places in my neighborhood.
- */
-$williamsburgPlaces = $hyperpublic->places->find(array('location[neighborhood]'=>'williamsburg','limit'=>'10'));
-
-/*
- * Look up things tagged fun
- */
-$healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode]' => '11211'));
-
-
 ?>
 
 <!doctype html>
@@ -52,6 +21,14 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
     </style>
   </head>
   <body>
+
+
+<?php         
+        /*
+         * Look up a user by ID.
+         */
+         $me = $hyperpublic->people->show(4);
+?>
     <!-- Get a user's name -->
       <h1>Hi. My Name is <?php echo $me->headline ?>.</h1>
       <!-- Get a user's picture -->
@@ -68,6 +45,12 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
       ?>
     </ul>
       <h1>I work at Hyperpublic. Check out a picture of our office.</h1>
+      <?php
+        /*
+         * Look up a place by ID.
+         */
+         $myOffice = $hyperpublic->places->show(5092);
+      ?>
       <!-- Get a picture of a place -->
       <img src=<?php echo "'{$myOffice->image->src_large}'" ?> />
       <h1>Lets see where its located.</h1>
@@ -76,6 +59,10 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
       <h1>That was easy. Let's see some developers.</h1>
       <!-- Get people tagged as 'developer' -->
       <?php         
+       /*
+        * Look up people who tagged themselves as a developer.
+        */
+        $developers = $hyperpublic->people->find(array('tags' => 'developer'));
         foreach($developers as $developer){
           if (!empty($developer->image->src_large)){
             echo "<img src='{$developer->image->src_large}'/>";
@@ -87,6 +74,13 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
       <?php                                                            
         $markers = array();
         $latLon = NULL;        
+
+
+        /*
+         * Look up places in my neighborhood.
+         */
+         $williamsburgPlaces = $hyperpublic->places->find(array('location[neighborhood]'=>'williamsburg','limit'=>'10'));
+
         foreach($williamsburgPlaces as $williamsburgPlace){
             if(!empty($williamsburgPlace->locations[0]->lat) && !empty($williamsburgPlace->locations[0]->lon)) {
               $latLon = $williamsburgPlace->locations[0]->lat . "," . $williamsburgPlace->locations[0]->lon;
@@ -100,17 +94,31 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
 
       <h1>My good friend Nick put his avocado tree on Hyperpublic. Let's see what it looks like.</h1>
       <!-- Get a photograph of a thing -->
+    <?php 
+
+    /*
+     * Look up a thing by ID.
+     */
+     $avocadoTree = $hyperpublic->things->show(415);
+    ?>
+
       <?php echo "<img src='{$avocadoTree->image->src_large}'>"?>
     <h1>Do want. I hope its not too far from my house.</h1>
     <!-- Get the lat/lon of a thing and put it on a Google Map -->
-    <?php echo "<img src='http://maps.google.com/maps/api/staticmap?center={$avocadoTree->locations[0]->lat},{$avocadoTree->locations[0]->lon}&zoom=14&size=400x400&sensor=false&markers=color:blue%7Clabel:H%7C{$avocadoTree->locations[0]->lat},{$avocadoTree->locations[0]->lon}'/>" ?> 
+    <?php
+    echo "<img src='http://maps.google.com/maps/api/staticmap?center={$avocadoTree->locations[0]->lat},{$avocadoTree->locations[0]->lon}&zoom=14&size=400x400&sensor=false&markers=color:blue%7Clabel:H%7C{$avocadoTree->locations[0]->lat},{$avocadoTree->locations[0]->lon}'/>" ?> 
     <h1>Oof. Marina Del Ray. I guess we can look up healthy restaurants near my house. I bet they have avocados.</h1>
     <!-- Get the lat/lon of an array of places tagged 'healthy' near the zipcode 11211. Put them on a static Google Map -->
     <?php                                                            
         unset($markers);
         $markers = array();
         $latLon = NULL;                     
-        $count = 0;                       
+        $count = 0;      
+        /*
+         * Look up things tagged fun
+         */
+         $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode]' => '11211'));
+                 
         foreach($healthy as $place){
           if(!empty($place->locations[0]->lat) && !empty($place->locations[0]->lon)) {
             $latLon = $place->locations[0]->lat . "," . $place->locations[0]->lon;
@@ -124,6 +132,7 @@ $healthy = $hyperpublic->places->find(array('tags'=>'healthy', 'location[zipcode
     <!-- Get the names of the healthy restaurants near 11211. -->
     <?php 
         $names = array();
+
         foreach($healthy as $restaurant){
           if(!empty($restaurant->name)){
             array_push($names,$restaurant->name);

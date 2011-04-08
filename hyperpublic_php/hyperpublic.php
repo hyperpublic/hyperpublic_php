@@ -1,13 +1,12 @@
 <?php
 
-/*
+/**
  *
  * Library for the Hyperpublic v1-beta API
  *
  * @author Jonathan Vingiano (@jgv | jonathan@hyperpublic.com)
- * 
+ *
  */
-
 
 if (preg_match("/hyperpublic\.php$/", $_SERVER['PHP_SELF'])){
 	exit('No direct script access allowed');
