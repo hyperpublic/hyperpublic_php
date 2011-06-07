@@ -23,24 +23,33 @@ class HyperpublicTest extends TestCase {
     // first lets make sure its an object
     $this->AssertEquals(is_object($this->showPerson), true, $message = 'show person');
     $this->AssertEquals(is_object($this->findPerson), true, $message = 'find person');
+    $this->AssertEquals(is_object($this->createPerson), true, $message = 'create person');
     $this->AssertEquals(is_object($this->showPlace), true, $message = 'show place');
     $this->AssertEquals(is_object($this->findPlace), true, $message = 'find place');
+    $this->AssertEquals(is_object($this->createPlace), true, $message = 'create place');
     $this->AssertEquals(is_object($this->showThing), true, $message = 'show thing');
-    $this->AssertEquals(is_object($this->showThing), true, $message = 'find thing');
+    $this->AssertEquals(is_object($this->findThing), true, $message = 'find thing');
+    $this->AssertEquals(is_object($this->createThing), true, $message = 'create thing');
     // then lets make sure it returns with a 200 status code
     $this->AssertEquals($this->showPerson->http_code, 200, $message = 'show person status code');
     $this->AssertEquals($this->findPerson->http_code, 200, $message = 'find person status code');
+    $this->AssertEquals($this->createPerson->http_code, 200, $message = 'create person status code');
     $this->AssertEquals($this->showPlace->http_code, 200, $message = 'show place status code');
     $this->AssertEquals($this->findPlace->http_code, 200, $message = 'find place status code');
+    $this->AssertEquals($this->createPlace->http_code, 200, $message = 'create place status code');
     $this->AssertEquals($this->showThing->http_code, 200, $message = 'show thing status code');
-    $this->AssertEquals($this->showThing->http_code, 200, $message = 'find thing status code');
+    $this->AssertEquals($this->findThing->http_code, 200, $message = 'find thing status code');
+    $this->AssertEquals($this->createThing->http_code, 200, $message = 'create thing status code');
     // finally lets check the content type
     $this->AssertEquals($this->showPerson->http_info['content_type'], 'application/json; charset=utf-8', $message = 'show person content type');
     $this->AssertEquals($this->findPerson->http_info['content_type'], 'application/json; charset=utf-8', $message = 'find person content type');
+    $this->AssertEquals($this->createPerson->http_info['content_type'], 'application/json; charset=utf-8', $message = 'create person content type');
     $this->AssertEquals($this->showPlace->http_info['content_type'], 'application/json; charset=utf-8', $message = 'show place content type');
     $this->AssertEquals($this->findPlace->http_info['content_type'], 'application/json; charset=utf-8', $message = 'find place content type');
+    $this->AssertEquals($this->createPlace->http_info['content_type'], 'application/json; charset=utf-8', $message = 'create place content type');
     $this->AssertEquals($this->showThing->http_info['content_type'], 'application/json; charset=utf-8', $message = 'show thing content type');
-    $this->AssertEquals($this->showThing->http_info['content_type'], 'application/json; charset=utf-8', $message = 'find thing content type');
+    $this->AssertEquals($this->findThing->http_info['content_type'], 'application/json; charset=utf-8', $message = 'find thing content type');
+    $this->AssertEquals($this->createThing->http_info['content_type'], 'application/json; charset=utf-8', $message = 'creaet thing content type');
   }
   public function TearDown(){
     unset($hyperpublic);
