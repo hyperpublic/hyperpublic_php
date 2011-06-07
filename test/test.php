@@ -11,10 +11,13 @@ class HyperpublicTest extends TestCase {
     $hyperpublic = new Hyperpublic(CONSUMER_KEY,CONSUMER_SECRET);
     $this->showPerson = $hyperpublic->people->show(4);
     $this->findPerson = $hyperpublic->people->find(array('location' => '11211', 'limit' => '1'));
+    $this->createPerson = $hyperpublic->people->create(array('email' => 'jonathan@hyperpublic.com', 'password' => 'openSesame', 'location' => '11211'));
     $this->showPlace = $hyperpublic->places->show(100);
     $this->findPlace = $hyperpublic->places->find(array('location' => '11211', 'limit' => '1'));
+    $this->createPlace = $hyperpublic->places->create(array('display_name' => 'php', 'location' => '11211'));
     $this->showThing = $hyperpublic->things->show(420);
     $this->findThing = $hyperpublic->things->find(array('location' => '11211', 'limit' => '1'));
+    $this->createThing = $hyperpublic->things->create(array('display_name' => 'arbys', 'location' => 'san francisco, ca', 'tags' => 'kreayshawn'));
   }
   public function Run() {
     // first lets make sure its an object
