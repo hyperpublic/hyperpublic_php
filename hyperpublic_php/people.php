@@ -30,7 +30,7 @@ class People extends Base {
    *
    */
   function show($id = ''){
-    $this->get("/people/$id}{$this->consumer}");
+    $this->get("/people/{$id}{$this->consumer}");
     return $this;
   }
 
@@ -54,7 +54,7 @@ class People extends Base {
    *
    */
   function create(array $params){
-    $this->post("/people" . $this->consumer . "&" . http_build_query($params));
+    $this->post("/people", $this->consumer . "&" . http_build_query($params));
     return $this;
   }
 
