@@ -32,7 +32,7 @@ class Things extends Base {
    *
    */
   function show($id = ''){
-    $this->get("/things/{$id}{$this->consumer}");
+    $this->get("/things/{$id}?{$this->consumer}");
     return $this;
   }
 
@@ -44,7 +44,7 @@ class Things extends Base {
    *
    */
   function find(array $params){
-    $this->get("/things" . $this->consumer . "&" . http_build_query($params));
+    $this->get("/things?" . $this->consumer . "&" . http_build_query($params));
     return $this;
   }
 
@@ -56,7 +56,7 @@ class Things extends Base {
    *
    */  
   function create(array $params){
-    $this->post("/things" . $this->consumer  . "&" . http_build_query($params));
+    $this->post("/things" , $this->consumer  . "&" . http_build_query($params));
     return $this;
   }
 
