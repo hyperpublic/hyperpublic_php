@@ -8,11 +8,11 @@ class Base {
 
   public $http_code; /* Last HTTP status code | @var string */
   public $url;  /* Last API call | @var string */
-  public $host = "https://hyperpublic.com/api/v1"; /* Hyperpublic API base URL | @var string */
+  public $host = "http://127.0.0.1:3000/api/v1"; /* Hyperpublic API base URL | @var string */
   public $timeout = 30; /* Timeout default | @var integer */
   public $connect_timeout = 30; /* Connect timeout default | @var integer */
   public $http_info; /* Lat HTTP headers | @var string */
-  public $useragent = "Hyperpublic PHP beta"; /* Useragent string | @var string */
+  public $useragent = "Hyperpublic PHP Library"; /* Useragent string | @var string */
   public $ssl_verifypeer = FALSE; /* Verify SSL Cert? | @var boolean */
 
   /**
@@ -20,9 +20,10 @@ class Base {
    *
    */    
   public function get($url = ''){
-    $url = $this->host . $url;
+    $url = $this->host .  $url;
     $response = $this->http($url, 'GET');
     $response = json_decode($response);
+    print_r($response);
     if (isset($response)){
       foreach ($response as $key => $value) {
         $this->{$key} = $value;
@@ -37,9 +38,9 @@ class Base {
    * Make an HTPP POST request
    *
    */      
-  public function post($url = '') {
+  public function post($url = '', $params = '') {
     $url = $this->host . $url;
-    $response = $this->http($url, 'POST');
+    $response = $this->http($url, 'POST', $params);
     $response = json_decode($response);
     if (isset($response)){
       foreach ($response as $key => $value) {
@@ -73,7 +74,7 @@ class Base {
     case 'POST':
       curl_setopt($ci, CURLOPT_POST, TRUE);
       if (!empty($post_fields)) {
-        curl_setopt($ci, CURLOPT_POST_FIELDS, $post_fields);
+       curl_setopt($ci, CURLOPT_POSTFIELDS, $post_fields);
       }
       break;
     case 'DELETE':

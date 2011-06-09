@@ -36,7 +36,7 @@ class Places extends Base {
    *
    */
   function show($id = ''){
-    $this->get("/places/{$id}{$this->consumer}");
+    $this->get("/places/{$id}?{$this->consumer}");
     return $this;
   }
 
@@ -48,7 +48,7 @@ class Places extends Base {
    *
    */
   function find(array $params){
-    $this->get("/places" . $this->consumer . "&" . http_build_query($params));
+    $this->get("/places?" . $this->consumer . "&" . http_build_query($params));
     return $this;
   }
 
@@ -60,7 +60,7 @@ class Places extends Base {
    *
    */
   function create(array $params){
-    $this->post("/places" . $this->consumer . "&" . http_build_query($params));
+    $this->post("/places" , $this->consumer . "&" . http_build_query($params));
     return $this;
   }
 
