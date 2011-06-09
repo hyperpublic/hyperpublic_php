@@ -367,7 +367,8 @@ class Event
   {
     list($usec, $sec) = explode(' ', microtime());
     $usec = substr($usec . '00000', 2, 3);
-    $now = new DateTime('America/New_York' . $sec);
+    $tz = new DateTimeZone('America/New_York');
+    $now = new DateTime(null, $tz);
     $this->time = $now->format('d M y, H:i:s.' . $usec .  ' O');
     $this->type = $type;
     $this->reason = $reason;
